@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 var user = new Schema({
   name: {
     type: String,
-    required: true
   },
   email: {
     type: String,
@@ -13,6 +12,9 @@ var user = new Schema({
   password: {
     type: String,
     required: true
+  },
+  token: {
+    type: String
   },
   created_at: {
     type: Date,

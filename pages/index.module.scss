@@ -1,3 +1,60 @@
 .homepage{
   color: var(--color-text-primary);
 }
+
+.background{
+  background-image: url(/images/landing.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 562px;
+  flex: 0 0 48.33333333%;
+  
+  background-clip: padding-box;
+  background-origin: padding-box;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
+
+.canvas{
+  background-color: var(--color-bg-canvas);
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: var(--color-border-primary);
+}
+
+.round_image{
+  background-position: center;
+  background-size: cover;
+  background-color: #ccb03f;
+  border-radius: 50%;
+  border: 3px solid white;
+  filter: grayscale(0.1) contrast(1.1) brightness(0.8);
+}
+
+.wrapper{
+}
+
+@media (min-width: 1200px) {
+  .land2{
+    width: 1167px;
+    margin: auto;
+  }
+}
+
+.divider{
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.premium{
+  width: 14rem;
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-bg-canvas);
+}
+
+.price{
+  color: var(--color-text-link)
+}
+
+.faq{
+  border-top: 1px solid var(--color-border-primary);
+}

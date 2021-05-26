@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { alertActions } from './alert.actions'
 
 const types = {
   get: "ACTION_CART_GET",
   clear: "ACTION_CART_CLEAR",
-
+  checkout: "ACTION_CART_CHECKOUT"
 }
 
 const add = (data) => async(dispatch) => {
@@ -13,10 +14,11 @@ const add = (data) => async(dispatch) => {
 
 const get = () => async (dispatch) => {
   const response = await axios.get("/api/cart")
-  dispatch({
-    type: types.get,
-    payload: response.data
-  })
+  if( response.data.type == "success")
+    dispatch({
+      type: types.get,
+      payload: response.data.payload
+    })
 }
 
 const remove = (domain) => async(dispatch) => {
@@ -31,7 +33,17 @@ const clear = () => async(dispatch) => {
   })
 }
 
-
+const checkout = ( callback ) => async (dispatch) => {
+  const response = await axios.post("/api/cart/checkout")
+  dispatch({
+    type: types.checkout
+  })
+  if(response.data.type == "success"){
+    dispatch(alertActions.success("Domains are purchased"))
+  }
+  get()(dispatch)
+  callback()
+}
 
 export const cartActions = {
   types,
@@ -39,4 +51,5 @@ export const cartActions = {
   add,
   remove,
   clear,
+  checkout
 };
